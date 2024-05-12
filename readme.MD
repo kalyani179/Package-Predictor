@@ -1,1 +1,10 @@
-# First commit
+- cgpa
+- codechef rating
+- leetcode (easy,medium,hard)
+- gfg nö of questions
+- aptitude (begginer, medium, expert)
+- communication skills (begginer, medium, expert)
+- no of internships (1m, 2-5m,6 or above six)
+- no of certification
+- technologies
+- current package
