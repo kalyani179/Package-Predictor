@@ -6,13 +6,14 @@ class SatKal{
         JFrame frame = new JFrame("SatKal");
 
         NavBar navbar = new NavBar();
-
+        navbar.getLogo();
+        
         frame.add(navbar);
         frame.setLayout(new FlowLayout());
-        frame.setSize(Constants.width,Constants.height);
-        frame.setVisible(true);
         frame.getContentPane().setBackground(Color.WHITE);
         frame.setResizable(false);
+        frame.setSize(Constants.width,Constants.height);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
     }
 }
