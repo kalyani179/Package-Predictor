@@ -1,6 +1,7 @@
 import javax.swing.JFrame;
 import java.awt.*;
-import Components.*;
+import Components.NavBar;
+import Components.Constants;
 class SatKal{
     public static void main(String[] args) {
         JFrame frame = new JFrame("SatKal");
@@ -10,7 +11,7 @@ class SatKal{
         
         frame.add(navbar);
         frame.setLayout(new FlowLayout());
-        frame.getContentPane().setBackground(Color.WHITE);
+        frame.getContentPane().setBackground(Color.BLACK);
         frame.setResizable(false);
         frame.setSize(Constants.width,Constants.height);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
