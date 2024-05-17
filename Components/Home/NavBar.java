@@ -1,4 +1,4 @@
-package Components;
+package Components.Home;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -9,6 +9,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Constants.Constants;
 class Hamburger extends JLabel{
     Hamburger(){
         ImageIcon hamburgerIcon = new ImageIcon("./Assets/Menu.jpeg");

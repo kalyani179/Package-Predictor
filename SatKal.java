@@ -1,7 +1,8 @@
 import javax.swing.JFrame;
 import java.awt.*;
-import Components.NavBar;
-import Components.Constants;
+
+import Components.Home.NavBar;
+import Constants.Constants;
 class SatKal{
     public static void main(String[] args) {
         JFrame frame = new JFrame("SatKal");
