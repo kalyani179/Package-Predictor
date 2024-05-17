@@ -18,6 +18,7 @@ public class NavBar extends JPanel {
         logo.setForeground(Color.BLACK);
         logo.setFont(new Font("Serif", Font.BOLD, 24));
         logo.setOpaque(true);
+        logo.setBackground(Color.YELLOW);
         logo.setBounds(10, 10, 100, 30); 
         this.add(logo); 
     }
