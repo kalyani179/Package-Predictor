@@ -1,3 +1,4 @@
+import Components.About.About;
 import Components.Home.NavBar;
 import Constants.Constants;
 
@@ -11,9 +12,10 @@ class SatKal{
         JFrame frame = new JFrame("SatKal");
 
         NavBar navbar = new NavBar();
-        navbar.getLogo();
+        About about = new About();
         
-        frame.add(navbar);
+        // frame.add(navbar);
+        frame.add(about);
         frame.setLayout(new FlowLayout());
         frame.getContentPane().setBackground(Color.BLACK);
         frame.setResizable(false);
