@@ -1,19 +1,20 @@
 package Components.Home;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Image;
+import Constants.Constants;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Constants.Constants;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Image;
+
 class Hamburger extends JLabel{
     Hamburger(){
-        ImageIcon hamburgerIcon = new ImageIcon("./Assets/Menu.jpeg");
+        ImageIcon hamburgerIcon = new ImageIcon("./Assets/Menu.png");
         
         Image img = hamburgerIcon.getImage();
         Image resizedImg = img.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);
@@ -34,13 +35,13 @@ public class NavBar extends JPanel {
     public void getLogo() {
         JLabel logo = new JLabel("SatKal");
         Hamburger menu = new Hamburger();
-        menu.setBounds(Constants.width - 60,10,50,50);
+        menu.setBounds(Constants.width - 80,10,50,50);
         logo.setForeground(Color.white);
         logo.setBackground(Color.black);
         logo.setBorder(new EmptyBorder(20,20,20,20));
         logo.setFont(new Font("Serif", Font.BOLD, 48));
         logo.setOpaque(true);
-        logo.setBounds(0, 0, 250, 50); 
+        logo.setBounds(5, 5, 250, 50); 
         this.add(logo); 
         this.add(menu);
     }

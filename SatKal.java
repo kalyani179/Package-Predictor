@@ -1,8 +1,11 @@
-import javax.swing.JFrame;
-import java.awt.*;
-
 import Components.Home.NavBar;
 import Constants.Constants;
+
+import javax.swing.JFrame;
+
+import java.awt.Color;
+import java.awt.FlowLayout;
+
 class SatKal{
     public static void main(String[] args) {
         JFrame frame = new JFrame("SatKal");
