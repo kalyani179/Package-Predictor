@@ -7,8 +7,6 @@ import javax.swing.JFrame;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.util.concurrent.Flow;
 
 class SatKal{
     public static void main(String[] args) {
