@@ -1,7 +1,5 @@
 package Components.Home;
 
-import Constants.Constants;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -13,6 +11,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
 
+import Constants.Constants;
 
 class CurvyButton extends JButton {
     CurvyButton(String text) {
