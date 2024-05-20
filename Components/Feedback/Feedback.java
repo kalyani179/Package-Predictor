@@ -17,7 +17,7 @@ import Constants.Constants;
 
 public class Feedback extends JPanel implements ActionListener{
     private JTextField name,email;
-    JTextArea feedbackMessage;
+    JTextArea feedback;
     private JButton submit; 
     public Feedback(){
         JLabel heading = new JLabel();
@@ -39,14 +39,14 @@ public class Feedback extends JPanel implements ActionListener{
         email.setFont(new Font("Montserrat", Font.BOLD, 18));
         email.setBounds(centerX, centerY - 120,Constants.width/4,40);
 
-        feedbackMessage = new JTextArea("Enter your Feedback");
-        feedbackMessage.setFont(new Font("Montserrat", Font.BOLD, 18));
-        feedbackMessage.setLineWrap(true);
-        feedbackMessage.setWrapStyleWord(true);
-        feedbackMessage.setBounds(centerX, centerY - 60, Constants.width / 4, 100);
+        feedback = new JTextArea("Enter your Feedback");
+        feedback.setFont(new Font("Montserrat", Font.BOLD, 18));
+        feedback.setLineWrap(true);
+        feedback.setWrapStyleWord(true);
+        feedback.setBounds(centerX, centerY - 60, Constants.width / 4, 100);
 
 
-        JScrollPane scrollPane = new JScrollPane(feedbackMessage);
+        JScrollPane scrollPane = new JScrollPane(feedback);
         scrollPane.setBounds(centerX, centerY - 60, Constants.width / 4, 100);
 
         submit = new JButton("Submit");
@@ -60,7 +60,7 @@ public class Feedback extends JPanel implements ActionListener{
         this.add(heading);
         this.add(name);
         this.add(email);
-        this.add(feedbackMessage);
+        this.add(feedback);
         this.add(scrollPane);
         this.add(submit);
     }
@@ -69,7 +69,7 @@ public class Feedback extends JPanel implements ActionListener{
         if(e.getSource()==submit){
             System.out.println(name.getText());
             System.out.println(email.getText());
-            System.out.println(feedbackMessage.getText());
+            System.out.println(feedback.getText());
         }
     }
 }
