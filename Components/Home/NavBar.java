@@ -32,7 +32,7 @@ public class NavBar extends JPanel {
     public NavBar() {
         this.setLayout(null);
         this.setBackground(Color.BLACK);
-        this.setBounds(0,0,Constants.width, 300);
+        this.setBounds(0,0,Constants.width, 50);
         getLogo();
     }
 
