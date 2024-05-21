@@ -1,5 +1,4 @@
 package Components.Home;
-
 import javax.swing.*;
 
 import Constants.Constants;
@@ -13,34 +12,44 @@ public class Home extends JPanel {
         label.setFont(new Font("Montserrat", Font.BOLD, 18));
         return label;
     }
+
     public Home() {
         this.setBackground(Color.BLACK);
         this.setForeground(Color.white);
-        this.setBounds(50,100,Constants.width,Constants.height - 100);
+        this.setBounds(50, 100, Constants.width - 100, Constants.height - 100);
         setLayout(new BorderLayout());
         // Top panel with buttons
         JPanel topPanel = new JPanel();
         topPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         topPanel.setBackground(Color.BLACK);
-        
-        JButton button1 = createRoundedButton("Button 1");
-        JButton button2 = createRoundedButton("Button 2");
-        
+
+        JButton button1 = createRoundedButton("Individual");
+        JButton button2 = createRoundedButton("Mass/Group");
+
         topPanel.add(button1);
         topPanel.add(button2);
-        
+
         // Main form panel
-        JPanel formPanel = new JPanel();
-        formPanel.setLayout(new GridLayout(20, 2, 10, 10));  // 20 rows for each form field
-        
-        // Stream dropdown
-        formPanel.add(createLabel("Stream:"));
-        JComboBox<String> streamDropdown = new JComboBox<>(new String[]{"CSE", "ECE", "IT", "ME", "EEE", "Civil", "Chemical"});
-        formPanel.add(streamDropdown);
+        JPanel formPanel = new JPanel(new GridBagLayout());
         formPanel.setBackground(Color.BLACK);
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.WEST;
+        gbc.insets = new Insets(5, 10, 5, 10); // Padding
+
+        // Stream dropdown
+        formPanel.add(createLabel("Stream:"), gbc);
+        gbc.gridx = 1;
+        gbc.anchor = GridBagConstraints.EAST;
+        JComboBox<String> streamDropdown = new JComboBox<>(new String[]{"CSE", "ECE", "IT", "ME", "EEE", "Civil", "Chemical"});
+        formPanel.add(streamDropdown, gbc);
 
         // Gender radio buttons
-        formPanel.add(createLabel("Gender:"));
+        gbc.gridx = 0;
+        gbc.gridy++;
+        gbc.anchor = GridBagConstraints.WEST;
+        formPanel.add(createLabel("Gender:"), gbc);
         JPanel genderPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         JRadioButton maleButton = new JRadioButton("Male");
         JRadioButton femaleButton = new JRadioButton("Female");
@@ -49,35 +58,64 @@ public class Home extends JPanel {
         genderGroup.add(femaleButton);
         genderPanel.add(maleButton);
         genderPanel.add(femaleButton);
-        formPanel.add(genderPanel);
-        
+        gbc.gridx = 1;
+        gbc.anchor = GridBagConstraints.EAST;
+        formPanel.add(genderPanel, gbc);
+
         // Age in years
-        formPanel.add(createLabel("Age in years:"));
-        JTextField ageField = new JTextField();
-        formPanel.add(ageField);
-        
+        formPanel.add(createLabel("Age in years:"), gbc);
+        gbc.gridx = 1;
+        gbc.anchor = GridBagConstraints.EAST;
+        JTextField ageField = new JTextField("Age in years");
+        formPanel.add(ageField, gbc);
+
         // 10th result in %
-        formPanel.add(createLabel("10th result in %:"));
-        JTextField tenthResultField = new JTextField();
-        formPanel.add(tenthResultField);
-        
+        gbc.gridx = 0;
+        gbc.gridy++;
+        gbc.anchor = GridBagConstraints.WEST;
+        formPanel.add(createLabel("10th result in %:"), gbc);
+        gbc.gridx = 1;
+        gbc.anchor = GridBagConstraints.EAST;
+        JTextField tenthResultField = new JTextField("10th result in %");
+        formPanel.add(tenthResultField, gbc);
+
         // 12th result in %
-        formPanel.add(createLabel("12th result in %:"));
-        JTextField twelfthResultField = new JTextField();
-        formPanel.add(twelfthResultField);
-        
+        gbc.gridx = 0;
+        gbc.gridy++;
+        gbc.anchor = GridBagConstraints.WEST;
+        formPanel.add(createLabel("12th result in %:"), gbc);
+        gbc.gridx = 1;
+        gbc.anchor = GridBagConstraints.EAST;
+        JTextField twelfthResultField = new JTextField("Inter result in %");
+        formPanel.add(twelfthResultField, gbc);
+
         // BTech CGPA
-        formPanel.add(createLabel("BTech CGPA:"));
-        JTextField btechCgpaField = new JTextField();
-        formPanel.add(btechCgpaField);
-        
+        gbc.gridx = 0;
+        gbc.gridy++;
+        gbc.anchor = GridBagConstraints.WEST;
+        formPanel.add(createLabel("BTech CGPA:"), gbc);
+        gbc.gridx = 1;
+        gbc.anchor = GridBagConstraints.EAST;
+        JTextField btechCgpaField = new JTextField("BTech CGPA");
+        formPanel.add(btechCgpaField, gbc);
+
         // Number of backlogs
-        formPanel.add(createLabel("Number of backlogs:"));
-        JTextField backlogsField = new JTextField();
-        formPanel.add(backlogsField);
-        
+        gbc.gridx = 0;
+        gbc.gridy++;
+        gbc.anchor = GridBagConstraints.WEST;
+        formPanel.add(createLabel("Number of backlogs:"), gbc);
+        gbc.gridx = 1;
+        gbc.anchor = GridBagConstraints.EAST;
+        JTextField backlogsField = new JTextField("Number of backlogs");
+        formPanel.add(backlogsField, gbc);
+
         // Codechef stars radio buttons
-        formPanel.add(createLabel("Codechef stars:"));
+        gbc.gridx = 0;
+        gbc.gridy++;
+        gbc.anchor = GridBagConstraints.WEST;
+        formPanel.add(createLabel("Codechef stars:"), gbc);
+        gbc.gridx = 1;
+        gbc.anchor = GridBagConstraints.EAST;
         JPanel codechefStarsPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         ButtonGroup codechefStarsGroup = new ButtonGroup();
         for (int i = 0; i <= 5; i++) {
@@ -85,28 +123,48 @@ public class Home extends JPanel {
             codechefStarsGroup.add(starButton);
             codechefStarsPanel.add(starButton);
         }
-        formPanel.add(codechefStarsPanel);
-        
+        formPanel.add(codechefStarsPanel, gbc);
+
         // CodeForces title dropdown
-        formPanel.add(createLabel("CodeForces title:"));
+        gbc.gridx = 0;
+        gbc.gridy++;
+        gbc.anchor = GridBagConstraints.WEST;
+        formPanel.add(createLabel("CodeForces title:"), gbc);
+        gbc.gridx = 1;
+        gbc.anchor = GridBagConstraints.EAST;
         JComboBox<String> codeforcesDropdown = new JComboBox<>(new String[]{
-            "Account not created", "Newbie", "Pupil", "Apprentice", "Specialist",
-            "Expert", "Candidate master", "Master", "International master", "Grandmaster"
+                "Account not created", "Newbie", "Pupil", "Apprentice", "Specialist",
+                "Expert", "Candidate master", "Master", "International master", "Grandmaster"
         });
-        formPanel.add(codeforcesDropdown);
-        
+        formPanel.add(codeforcesDropdown, gbc);
+
         // Hackerrank number of questions solved
-        formPanel.add(createLabel("Hackerrank number of questions solved:"));
-        JTextField hackerrankSolvedField = new JTextField();
-        formPanel.add(hackerrankSolvedField);
-        
+        gbc.gridx = 0;
+        gbc.gridy++;
+        gbc.anchor = GridBagConstraints.WEST;
+        formPanel.add(createLabel("Hackerrank number of questions solved:"), gbc);
+        gbc.gridx = 1;
+        gbc.anchor = GridBagConstraints.EAST;
+        JTextField hackerrankSolvedField = new JTextField("Number of Hackerrank questions sovled");
+        formPanel.add(hackerrankSolvedField, gbc);
+
         // Leetcode number of questions solved
-        formPanel.add(createLabel("Leetcode number of questions solved:"));
-        JTextField leetcodeSolvedField = new JTextField();
-        formPanel.add(leetcodeSolvedField);
-        
+        gbc.gridx = 0;
+        gbc.gridy++;
+        gbc.anchor = GridBagConstraints.WEST;
+        formPanel.add(createLabel("Leetcode number of questions solved:"), gbc);
+        gbc.gridx = 1;
+        gbc.anchor = GridBagConstraints.EAST;
+        JTextField leetcodeSolvedField = new JTextField("Number of Leetcode questions solved");
+        formPanel.add(leetcodeSolvedField, gbc);
+
         // Aptitude proficiency radio buttons
-        formPanel.add(createLabel("Aptitude proficiency:"));
+        gbc.gridx = 0;
+        gbc.gridy++;
+        gbc.anchor = GridBagConstraints.WEST;
+        formPanel.add(createLabel("Aptitude proficiency:"), gbc);
+        gbc.gridx = 1;
+        gbc.anchor = GridBagConstraints.EAST;
         JPanel aptitudePanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         ButtonGroup aptitudeGroup = new ButtonGroup();
         String[] proficiencyLevels = {"Beginner", "Medium", "Expert"};
@@ -115,10 +173,15 @@ public class Home extends JPanel {
             aptitudeGroup.add(proficiencyButton);
             aptitudePanel.add(proficiencyButton);
         }
-        formPanel.add(aptitudePanel);
-        
+        formPanel.add(aptitudePanel, gbc);
+
         // Communication proficiency radio buttons
-        formPanel.add(createLabel("Communication proficiency:"));
+        gbc.gridx = 0;
+        gbc.gridy++;
+        gbc.anchor = GridBagConstraints.WEST;
+        formPanel.add(createLabel("Communication proficiency:"), gbc);
+        gbc.gridx = 1;
+        gbc.anchor = GridBagConstraints.EAST;
         JPanel communicationPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         ButtonGroup communicationGroup = new ButtonGroup();
         for (String level : proficiencyLevels) {
@@ -126,33 +189,45 @@ public class Home extends JPanel {
             communicationGroup.add(proficiencyButton);
             communicationPanel.add(proficiencyButton);
         }
-        formPanel.add(communicationPanel);
-        
+        formPanel.add(communicationPanel, gbc);
+
         // Work experience in months
-        formPanel.add(createLabel("Work experience in months:"));
-        JTextField workExperienceField = new JTextField();
-        formPanel.add(workExperienceField);
-        
+        gbc.gridx = 0;
+        gbc.gridy++;
+        gbc.anchor = GridBagConstraints.WEST;
+        formPanel.add(createLabel("Work experience in months:"), gbc);
+        gbc.gridx = 1;
+        gbc.anchor = GridBagConstraints.EAST;
+        JTextField workExperienceField = new JTextField("Enter number of months of work");
+        formPanel.add(workExperienceField, gbc);
+
         // Number of certifications
-        formPanel.add(createLabel("Number of certifications:"));
-        JTextField certificationsField = new JTextField();
-        formPanel.add(certificationsField);
-        
-        // Current package in LPA
-        formPanel.add(createLabel("Current package in LPA:"));
-        JTextField packageField = new JTextField();
-        formPanel.add(packageField);
-        
+        gbc.gridx = 0;
+        gbc.gridy++;
+        gbc.anchor = GridBagConstraints.WEST;
+        formPanel.add(createLabel("Number of certifications:"), gbc);
+        gbc.gridx = 1;
+        gbc.anchor = GridBagConstraints.EAST;
+        JTextField numberOfCertificates = new JTextField("Enter number of certificates");
+        formPanel.add(numberOfCertificates,gbc);
+
+        // Add more input fields in similar manner using GridBagConstraints
+
         // Predict button
+        gbc.gridx = 0;
+        gbc.gridy++;
+        gbc.gridwidth = 2;
+        gbc.anchor = GridBagConstraints.CENTER;
         JButton predictButton = new JButton("Predict");
-        formPanel.add(new JLabel());  // Empty label to align button
-        formPanel.add(predictButton);
+        predictButton.setBackground(new Color(0xfacc15));
+        predictButton.setSize(new Dimension(200, 50));
+        formPanel.add(predictButton, gbc);
 
         // Add top panel and form panel to main panel
         add(topPanel, BorderLayout.NORTH);
         add(formPanel, BorderLayout.CENTER);
     }
-    
+
     private JButton createRoundedButton(String text) {
         JButton button = new JButton(text) {
             @Override
@@ -165,7 +240,7 @@ public class Home extends JPanel {
                 g.fillRoundRect(0, 0, getWidth(), getHeight(), 30, 30);
                 super.paintComponent(g);
             }
-            
+
             @Override
             protected void paintBorder(Graphics g) {
                 g.setColor(getForeground());
