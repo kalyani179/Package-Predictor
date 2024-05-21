@@ -13,35 +13,6 @@ import java.awt.Image;
 
 import Constants.Constants;
 
-class CurvyButton extends JButton {
-    CurvyButton(String text) {
-        this.setBackground(Color.white);
-        this.setOpaque(true);
-        this.setBorder(new EmptyBorder(10,10,10,10));
-        this.setFont(new Font("Serif", Font.BOLD, 24));
-        this.setText(text);
-    }
-}
-
-
-class SelectionPanel extends JPanel {
-    public static int width = Constants.width - 200;
-    public static int height = Constants.height / 12;
-
-    SelectionPanel() {
-        this.setBackground(Color.black);
-        this.setForeground(Color.white);
-        this.setLayout(null); // Using null layout for absolute positioning
-
-        CurvyButton ind = new CurvyButton("Individual");
-        ind.setBounds(0,0,SelectionPanel.width/3,SelectionPanel.height);
-        CurvyButton grp = new CurvyButton("Mass/Group");
-        grp.setBounds(SelectionPanel.width/3,0,SelectionPanel.width/2,SelectionPanel.height);
-        this.add(ind);
-        this.add(grp);
-    }
-}
-
 class Hamburger extends JLabel {
     Hamburger() {
         ImageIcon hamburgerIcon = new ImageIcon("./Assets/Menu.png");
@@ -61,7 +32,7 @@ public class NavBar extends JPanel {
     public NavBar() {
         this.setLayout(null);
         this.setBackground(Color.BLACK);
-        this.setPreferredSize(new Dimension(Constants.width, 300));
+        this.setBounds(0,0,Constants.width, 300);
         getLogo();
     }
 
@@ -69,9 +40,6 @@ public class NavBar extends JPanel {
         JLabel logo = new JLabel("SatKal");
         Hamburger menu = new Hamburger();
         menu.setBounds(Constants.width - 80, 10, 50, 50);
-
-        SelectionPanel sp = new SelectionPanel();
-        sp.setBounds(50, 50, SelectionPanel.width, SelectionPanel.height); // Adjust position within NavBar
 
         logo.setForeground(Color.white);
         logo.setBackground(Color.black);
@@ -82,6 +50,5 @@ public class NavBar extends JPanel {
 
         this.add(logo);
         this.add(menu);
-        this.add(sp);
     }
 }
