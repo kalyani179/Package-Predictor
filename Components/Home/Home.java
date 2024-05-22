@@ -14,9 +14,10 @@ public class Home extends JPanel {
     }
 
     public Home() {
+        Dimension preferredSize = new Dimension(150,30);
         this.setBackground(Color.BLACK);
         this.setForeground(Color.white);
-        this.setBounds(50, 100, Constants.width - 100, Constants.height-150);
+        this.setBounds(50, 50, Constants.width - 100, Constants.height-100);
         setLayout(new BorderLayout());
         // Top panel with buttons
         JPanel topPanel = new JPanel();
@@ -41,7 +42,8 @@ public class Home extends JPanel {
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.anchor = GridBagConstraints.WEST;
-        gbc.insets = new Insets(5, 20, 5, 20); // Padding
+        gbc.insets = new Insets(5, 10, 5, 10); // Padding
+        gbc.fill = GridBagConstraints.HORIZONTAL;
 
         // Stream dropdown
         formPanel.add(createLabel("Stream:"), gbc);
@@ -49,6 +51,7 @@ public class Home extends JPanel {
         gbc.anchor = GridBagConstraints.EAST;
         JComboBox<String> streamDropdown = new JComboBox<>(new String[]{"CSE", "ECE", "IT", "ME", "EEE", "Civil", "Chemical"});
         streamDropdown.setFocusable(false); // Disable focus border
+        streamDropdown.setPreferredSize(preferredSize);
         formPanel.add(streamDropdown, gbc);
 
         // Gender radio buttons
@@ -68,18 +71,19 @@ public class Home extends JPanel {
         genderPanel.add(femaleButton);
         gbc.gridx = 1;
         gbc.anchor = GridBagConstraints.EAST;
+        genderPanel.setPreferredSize(preferredSize);
         formPanel.add(genderPanel, gbc);
 
         // Age in years
-        // gbc.gridx = 0;
-        // gbc.gridy++;
-        // gbc.anchor = GridBagConstraints.WEST;
-        // formPanel.add(createLabel("Age in years:"), gbc);
-        // gbc.gridx = 1;
-        // gbc.anchor = GridBagConstraints.EAST;
-        // JTextField ageField = new JTextField("Age in years");
-        // ageField.setFocusable(false); // Disable focus border
-        // formPanel.add(ageField, gbc);
+        gbc.gridx = 0;
+        gbc.gridy++;
+        gbc.anchor = GridBagConstraints.WEST;
+        formPanel.add(createLabel("Age in years:"), gbc);
+        gbc.gridx = 1;
+        gbc.anchor = GridBagConstraints.EAST;
+        JTextField ageField = new JTextField("Age in years");
+        ageField.setPreferredSize(preferredSize);
+        formPanel.add(ageField, gbc);
 
         // 10th result in %
         gbc.gridx = 0;
@@ -89,7 +93,8 @@ public class Home extends JPanel {
         gbc.gridx = 1;
         gbc.anchor = GridBagConstraints.EAST;
         JTextField tenthResultField = new JTextField("10th result in %");
-        tenthResultField.setFocusable(false); // Disable focus border
+        tenthResultField.setColumns(20);
+        tenthResultField.setPreferredSize(preferredSize);
         formPanel.add(tenthResultField, gbc);
 
 
@@ -102,6 +107,7 @@ public class Home extends JPanel {
         gbc.anchor = GridBagConstraints.EAST;
         JTextField twelfthResultField = new JTextField("Inter result in %");
         twelfthResultField.setFocusable(false); // Disable focus border
+        twelfthResultField.setPreferredSize(preferredSize);
         formPanel.add(twelfthResultField, gbc);
 
         // BTech CGPA
@@ -113,6 +119,7 @@ public class Home extends JPanel {
         gbc.anchor = GridBagConstraints.EAST;
         JTextField btechCgpaField = new JTextField("BTech CGPA");
         btechCgpaField.setFocusable(false); // Disable focus border
+        btechCgpaField.setPreferredSize(preferredSize);
         formPanel.add(btechCgpaField, gbc);
 
         // Number of backlogs
@@ -124,6 +131,7 @@ public class Home extends JPanel {
         gbc.anchor = GridBagConstraints.EAST;
         JTextField backlogsField = new JTextField("Number of backlogs");
         backlogsField.setFocusable(false); // Disable focus border
+        backlogsField.setPreferredSize(preferredSize);
         formPanel.add(backlogsField, gbc);
 
         // Codechef stars radio buttons
@@ -141,6 +149,7 @@ public class Home extends JPanel {
             codechefStarsGroup.add(starButton);
             codechefStarsPanel.add(starButton);
         }
+        codechefStarsPanel.setPreferredSize(preferredSize);
         formPanel.add(codechefStarsPanel, gbc);
 
         // CodeForces title dropdown
@@ -155,6 +164,7 @@ public class Home extends JPanel {
                 "Expert", "Candidate master", "Master", "International master", "Grandmaster"
         });
         codeforcesDropdown.setFocusable(false); // Disable focus border
+        codeforcesDropdown.setPreferredSize(preferredSize);
         formPanel.add(codeforcesDropdown, gbc);
 
         // Hackerrank number of questions solved
@@ -166,6 +176,7 @@ public class Home extends JPanel {
         gbc.anchor = GridBagConstraints.EAST;
         JTextField hackerrankSolvedField = new JTextField("Number of Hackerrank questions sovled");
         hackerrankSolvedField.setFocusable(false); // Disable focus border
+        hackerrankSolvedField.setPreferredSize(preferredSize);
         formPanel.add(hackerrankSolvedField, gbc);
 
         // Leetcode number of questions solved
@@ -177,6 +188,7 @@ public class Home extends JPanel {
         gbc.anchor = GridBagConstraints.EAST;
         JTextField leetcodeSolvedField = new JTextField("Number of Leetcode questions solved");
         leetcodeSolvedField.setFocusable(false); // Disable focus border
+        leetcodeSolvedField.setPreferredSize(preferredSize);
         formPanel.add(leetcodeSolvedField, gbc);
 
         // Aptitude proficiency radio buttons
@@ -195,6 +207,7 @@ public class Home extends JPanel {
             aptitudeGroup.add(proficiencyButton);
             aptitudePanel.add(proficiencyButton);
         }
+        aptitudePanel.setPreferredSize(preferredSize);
         formPanel.add(aptitudePanel, gbc);
 
         // Communication proficiency radio buttons
@@ -212,6 +225,7 @@ public class Home extends JPanel {
             communicationGroup.add(proficiencyButton);
             communicationPanel.add(proficiencyButton);
         }
+        communicationPanel.setPreferredSize(preferredSize);
         formPanel.add(communicationPanel, gbc);
 
         // Work experience in months
@@ -223,6 +237,7 @@ public class Home extends JPanel {
         gbc.anchor = GridBagConstraints.EAST;
         JTextField workExperienceField = new JTextField("Enter number of months of work");
         workExperienceField.setFocusable(false); // Disable focus border
+        workExperienceField.setPreferredSize(preferredSize);
         formPanel.add(workExperienceField, gbc);
 
         // Number of certifications
@@ -234,10 +249,8 @@ public class Home extends JPanel {
         gbc.anchor = GridBagConstraints.EAST;
         JTextField numberOfCertificates = new JTextField("Enter number of certificates");
         numberOfCertificates.setFocusable(false);
+        numberOfCertificates.setPreferredSize(preferredSize);
         formPanel.add(numberOfCertificates,gbc);
-
-        // Add more input fields in similar manner using GridBagConstraints
-
         // Predict button
         gbc.gridx = 0;
         gbc.gridy++;
