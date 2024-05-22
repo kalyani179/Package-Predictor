@@ -8,7 +8,11 @@ import Components.Home.Home;
 import Components.Home.NavBar;
 import Constants.Constants;
 
-class SatKal{
+public class SatKal extends JFrame{
+    public static JFrame frame;
+    public static void showMenu(){
+
+    }
     public static void main(String[] args) {
         JFrame frame = new JFrame("SatKal");
 
@@ -18,6 +22,7 @@ class SatKal{
         Home home = new Home();
         // frame.add(about);
         // frame.add(feedback);
+
         frame.setLayout(null);
         frame.add(navbar);
         frame.add(home);
@@ -28,5 +33,6 @@ class SatKal{
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
         frame.repaint();
+        SatKal.frame = frame;
     }
 }
