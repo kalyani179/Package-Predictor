@@ -1,9 +1,6 @@
 import javax.swing.JFrame;
 
 import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridLayout;
 
 import Components.About.About;
 import Components.Feedback.Feedback;

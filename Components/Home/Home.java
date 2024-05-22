@@ -16,7 +16,7 @@ public class Home extends JPanel {
     public Home() {
         this.setBackground(Color.BLACK);
         this.setForeground(Color.white);
-        this.setBounds(50, 100, Constants.width - 100, Constants.height - 100);
+        this.setBounds(50, 100, Constants.width - 100, Constants.height-150);
         setLayout(new BorderLayout());
         // Top panel with buttons
         JPanel topPanel = new JPanel();
@@ -24,7 +24,12 @@ public class Home extends JPanel {
         topPanel.setBackground(Color.BLACK);
 
         JButton button1 = createRoundedButton("Individual");
+        button1.setFont(new Font("Montserrat", Font.BOLD, 18));
+        button1.setMargin(new Insets(5, 20, 5, 20));
+
         JButton button2 = createRoundedButton("Mass/Group");
+        button2.setFont(new Font("Montserrat", Font.BOLD, 18));
+        button2.setMargin(new Insets(5, 20, 5, 20));
 
         topPanel.add(button1);
         topPanel.add(button2);
@@ -36,13 +41,14 @@ public class Home extends JPanel {
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.anchor = GridBagConstraints.WEST;
-        gbc.insets = new Insets(5, 10, 5, 10); // Padding
+        gbc.insets = new Insets(5, 20, 5, 20); // Padding
 
         // Stream dropdown
         formPanel.add(createLabel("Stream:"), gbc);
         gbc.gridx = 1;
         gbc.anchor = GridBagConstraints.EAST;
         JComboBox<String> streamDropdown = new JComboBox<>(new String[]{"CSE", "ECE", "IT", "ME", "EEE", "Civil", "Chemical"});
+        streamDropdown.setFocusable(false); // Disable focus border
         formPanel.add(streamDropdown, gbc);
 
         // Gender radio buttons
@@ -53,6 +59,8 @@ public class Home extends JPanel {
         JPanel genderPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         JRadioButton maleButton = new JRadioButton("Male");
         JRadioButton femaleButton = new JRadioButton("Female");
+        maleButton.setFocusable(false); // Disable focus border
+        femaleButton.setFocusable(false); // Disable focus border
         ButtonGroup genderGroup = new ButtonGroup();
         genderGroup.add(maleButton);
         genderGroup.add(femaleButton);
@@ -63,11 +71,15 @@ public class Home extends JPanel {
         formPanel.add(genderPanel, gbc);
 
         // Age in years
-        formPanel.add(createLabel("Age in years:"), gbc);
-        gbc.gridx = 1;
-        gbc.anchor = GridBagConstraints.EAST;
-        JTextField ageField = new JTextField("Age in years");
-        formPanel.add(ageField, gbc);
+        // gbc.gridx = 0;
+        // gbc.gridy++;
+        // gbc.anchor = GridBagConstraints.WEST;
+        // formPanel.add(createLabel("Age in years:"), gbc);
+        // gbc.gridx = 1;
+        // gbc.anchor = GridBagConstraints.EAST;
+        // JTextField ageField = new JTextField("Age in years");
+        // ageField.setFocusable(false); // Disable focus border
+        // formPanel.add(ageField, gbc);
 
         // 10th result in %
         gbc.gridx = 0;
@@ -77,7 +89,9 @@ public class Home extends JPanel {
         gbc.gridx = 1;
         gbc.anchor = GridBagConstraints.EAST;
         JTextField tenthResultField = new JTextField("10th result in %");
+        tenthResultField.setFocusable(false); // Disable focus border
         formPanel.add(tenthResultField, gbc);
+
 
         // 12th result in %
         gbc.gridx = 0;
@@ -87,6 +101,7 @@ public class Home extends JPanel {
         gbc.gridx = 1;
         gbc.anchor = GridBagConstraints.EAST;
         JTextField twelfthResultField = new JTextField("Inter result in %");
+        twelfthResultField.setFocusable(false); // Disable focus border
         formPanel.add(twelfthResultField, gbc);
 
         // BTech CGPA
@@ -97,6 +112,7 @@ public class Home extends JPanel {
         gbc.gridx = 1;
         gbc.anchor = GridBagConstraints.EAST;
         JTextField btechCgpaField = new JTextField("BTech CGPA");
+        btechCgpaField.setFocusable(false); // Disable focus border
         formPanel.add(btechCgpaField, gbc);
 
         // Number of backlogs
@@ -107,6 +123,7 @@ public class Home extends JPanel {
         gbc.gridx = 1;
         gbc.anchor = GridBagConstraints.EAST;
         JTextField backlogsField = new JTextField("Number of backlogs");
+        backlogsField.setFocusable(false); // Disable focus border
         formPanel.add(backlogsField, gbc);
 
         // Codechef stars radio buttons
@@ -120,6 +137,7 @@ public class Home extends JPanel {
         ButtonGroup codechefStarsGroup = new ButtonGroup();
         for (int i = 0; i <= 5; i++) {
             JRadioButton starButton = new JRadioButton(String.valueOf(i));
+            starButton.setFocusable(false); // Disable focus border
             codechefStarsGroup.add(starButton);
             codechefStarsPanel.add(starButton);
         }
@@ -136,6 +154,7 @@ public class Home extends JPanel {
                 "Account not created", "Newbie", "Pupil", "Apprentice", "Specialist",
                 "Expert", "Candidate master", "Master", "International master", "Grandmaster"
         });
+        codeforcesDropdown.setFocusable(false); // Disable focus border
         formPanel.add(codeforcesDropdown, gbc);
 
         // Hackerrank number of questions solved
@@ -146,6 +165,7 @@ public class Home extends JPanel {
         gbc.gridx = 1;
         gbc.anchor = GridBagConstraints.EAST;
         JTextField hackerrankSolvedField = new JTextField("Number of Hackerrank questions sovled");
+        hackerrankSolvedField.setFocusable(false); // Disable focus border
         formPanel.add(hackerrankSolvedField, gbc);
 
         // Leetcode number of questions solved
@@ -156,6 +176,7 @@ public class Home extends JPanel {
         gbc.gridx = 1;
         gbc.anchor = GridBagConstraints.EAST;
         JTextField leetcodeSolvedField = new JTextField("Number of Leetcode questions solved");
+        leetcodeSolvedField.setFocusable(false); // Disable focus border
         formPanel.add(leetcodeSolvedField, gbc);
 
         // Aptitude proficiency radio buttons
@@ -170,6 +191,7 @@ public class Home extends JPanel {
         String[] proficiencyLevels = {"Beginner", "Medium", "Expert"};
         for (String level : proficiencyLevels) {
             JRadioButton proficiencyButton = new JRadioButton(level);
+            proficiencyButton.setFocusable(false); // Disable focus border
             aptitudeGroup.add(proficiencyButton);
             aptitudePanel.add(proficiencyButton);
         }
@@ -186,6 +208,7 @@ public class Home extends JPanel {
         ButtonGroup communicationGroup = new ButtonGroup();
         for (String level : proficiencyLevels) {
             JRadioButton proficiencyButton = new JRadioButton(level);
+            proficiencyButton.setFocusable(false); // Disable focus border
             communicationGroup.add(proficiencyButton);
             communicationPanel.add(proficiencyButton);
         }
@@ -199,6 +222,7 @@ public class Home extends JPanel {
         gbc.gridx = 1;
         gbc.anchor = GridBagConstraints.EAST;
         JTextField workExperienceField = new JTextField("Enter number of months of work");
+        workExperienceField.setFocusable(false); // Disable focus border
         formPanel.add(workExperienceField, gbc);
 
         // Number of certifications
@@ -209,6 +233,7 @@ public class Home extends JPanel {
         gbc.gridx = 1;
         gbc.anchor = GridBagConstraints.EAST;
         JTextField numberOfCertificates = new JTextField("Enter number of certificates");
+        numberOfCertificates.setFocusable(false);
         formPanel.add(numberOfCertificates,gbc);
 
         // Add more input fields in similar manner using GridBagConstraints
@@ -221,6 +246,8 @@ public class Home extends JPanel {
         JButton predictButton = new JButton("Predict");
         predictButton.setBackground(new Color(0xfacc15));
         predictButton.setSize(new Dimension(200, 50));
+        predictButton.setFont(new Font("Montserrat", Font.BOLD, 18));
+        predictButton.setMargin(new Insets(0, 20, 0, 20));
         formPanel.add(predictButton, gbc);
 
         // Add top panel and form panel to main panel
@@ -237,7 +264,7 @@ public class Home extends JPanel {
                 } else {
                     g.setColor(new Color(0xfacc15));
                 }
-                g.fillRoundRect(0, 0, getWidth(), getHeight(), 30, 30);
+                g.fillRoundRect(0, 0, getWidth(), getHeight(), 40, 40);
                 super.paintComponent(g);
             }
 
@@ -248,6 +275,7 @@ public class Home extends JPanel {
             }
         };
         button.setContentAreaFilled(false);
+        button.setFocusPainted(false); // Disable focus border
         return button;
     }
 }
