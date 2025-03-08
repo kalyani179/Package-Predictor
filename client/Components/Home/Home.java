@@ -3,6 +3,21 @@ package Components.Home;
 import javax.swing.*;
 import Constants.Constants;
 import java.awt.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Map;
+import java.io.BufferedReader;
+import java.io.OutputStream;
+import java.io.InputStreamReader;
+import java.lang.Thread;
+import javax.swing.SwingUtilities;
+import org.json.JSONObject;
+import javax.swing.JOptionPane;
+import javax.swing.AbstractButton;
+import java.awt.event.FocusListener;
+import java.awt.event.FocusEvent;
 
 public class Home extends JPanel {
     private JLabel createLabel(String text) {
@@ -50,7 +65,15 @@ public class Home extends JPanel {
         formPanel.add(createLabel("Stream:"), gbc);
         gbc.gridx = 1;
         gbc.anchor = GridBagConstraints.EAST;
-        JComboBox<String> streamDropdown = new JComboBox<>(new String[]{"CSE", "ECE", "IT", "ME", "EEE", "Civil", "Chemical"});
+        String[] streams = {
+            "Computer Science and Engineering (CSE)",
+            "Electronics and Communication Engineering (ECE)",
+            "Information Technology (IT)",
+            "Chemical Engineering",
+            "Electrical and Electronics Engineering (EEE)",
+            "Civil Engineering"
+        };
+        JComboBox<String> streamDropdown = new JComboBox<>(streams);
         streamDropdown.setPreferredSize(preferredSize);
         formPanel.add(streamDropdown, gbc);
 
@@ -81,8 +104,9 @@ public class Home extends JPanel {
         formPanel.add(createLabel("Age in years:"), gbc);
         gbc.gridx = 1;
         gbc.anchor = GridBagConstraints.EAST;
-        JTextField ageField = new JTextField("Age in years");
+        JTextField ageField = new JTextField();
         ageField.setPreferredSize(preferredSize);
+        addPlaceholderBehavior(ageField, "Age in years");
         formPanel.add(ageField, gbc);
 
         // 10th result in %
@@ -92,9 +116,9 @@ public class Home extends JPanel {
         formPanel.add(createLabel("10th result in %:"), gbc);
         gbc.gridx = 1;
         gbc.anchor = GridBagConstraints.EAST;
-        JTextField tenthResultField = new JTextField("10th result in %");
-        tenthResultField.setColumns(20);
+        JTextField tenthResultField = new JTextField();
         tenthResultField.setPreferredSize(preferredSize);
+        addPlaceholderBehavior(tenthResultField, "10th result in %");
         formPanel.add(tenthResultField, gbc);
 
         // 12th result in %
@@ -104,8 +128,9 @@ public class Home extends JPanel {
         formPanel.add(createLabel("12th result in %:"), gbc);
         gbc.gridx = 1;
         gbc.anchor = GridBagConstraints.EAST;
-        JTextField twelfthResultField = new JTextField("Inter result in %");
+        JTextField twelfthResultField = new JTextField();
         twelfthResultField.setPreferredSize(preferredSize);
+        addPlaceholderBehavior(twelfthResultField, "Inter result in %");
         formPanel.add(twelfthResultField, gbc);
 
         // BTech CGPA
@@ -115,8 +140,9 @@ public class Home extends JPanel {
         formPanel.add(createLabel("BTech CGPA:"), gbc);
         gbc.gridx = 1;
         gbc.anchor = GridBagConstraints.EAST;
-        JTextField btechCgpaField = new JTextField("BTech CGPA");
+        JTextField btechCgpaField = new JTextField();
         btechCgpaField.setPreferredSize(preferredSize);
+        addPlaceholderBehavior(btechCgpaField, "BTech CGPA");
         formPanel.add(btechCgpaField, gbc);
 
         // Number of backlogs
@@ -126,9 +152,9 @@ public class Home extends JPanel {
         formPanel.add(createLabel("Number of backlogs:"), gbc);
         gbc.gridx = 1;
         gbc.anchor = GridBagConstraints.EAST;
-        JTextField backlogsField = new JTextField("Number of backlogs");
-        backlogsField.setFocusable(false); // Disable focus border
+        JTextField backlogsField = new JTextField();
         backlogsField.setPreferredSize(preferredSize);
+        addPlaceholderBehavior(backlogsField, "Number of backlogs");
         formPanel.add(backlogsField, gbc);
 
          // Codechef stars radio buttons
@@ -157,10 +183,16 @@ public class Home extends JPanel {
         gbc.gridx = 1;
         gbc.anchor = GridBagConstraints.EAST;
         JComboBox<String> codeforcesDropdown = new JComboBox<>(new String[]{
-                "Account not created", "Newbie", "Pupil", "Apprentice", "Specialist",
-                "Expert", "Candidate master", "Master", "International master", "Grandmaster"
+                "Account Not Created",  
+                "Newbie",
+                "Pupil",
+                "Apprentice",
+                "Expert"
+                // Removed titles not in training data:
+                // "Specialist", "Candidate master", "Master", 
+                // "International master", "Grandmaster"
         });
-        codeforcesDropdown.setFocusable(false); // Disable focus border
+        codeforcesDropdown.setFocusable(false);
         codeforcesDropdown.setPreferredSize(preferredSize);
         formPanel.add(codeforcesDropdown, gbc);
 
@@ -181,6 +213,7 @@ public class Home extends JPanel {
 
         String[] platforms = {"Hacker rank", "Leetcode", "GeeksForGeeks"};
         String[] ranges = {"0", "1-50", "50-150", "150-300", "more than 300"};
+        Map<String, ButtonGroup> platformGroups = new HashMap<>();
         for (String platform : platforms) {
             gbc.gridx = 3;
             gbc.gridy++;
@@ -198,6 +231,7 @@ public class Home extends JPanel {
             gbc.gridx = 4;
             gbc.anchor = GridBagConstraints.EAST;
             formPanel.add(platformPanel, gbc);
+            platformGroups.put(platform, platformGroup);
         }
 
         // Aptitude proficiency radio buttons
@@ -244,8 +278,9 @@ public class Home extends JPanel {
         formPanel.add(createLabel("Work experience in months:"), gbc);
         gbc.gridx = 4;
         gbc.anchor = GridBagConstraints.EAST;
-        JTextField experienceField = new JTextField("Work experience in months");
+        JTextField experienceField = new JTextField();
         experienceField.setPreferredSize(preferredSize);
+        addPlaceholderBehavior(experienceField, "Work experience in months");
         formPanel.add(experienceField, gbc);
 
         // Number of certifications
@@ -255,9 +290,10 @@ public class Home extends JPanel {
         formPanel.add(createLabel("Number of certifications:"), gbc);
         gbc.gridx = 4;
         gbc.anchor = GridBagConstraints.EAST;
-        JTextField companiesWorkedField = new JTextField("Number of certifications");
-        companiesWorkedField.setPreferredSize(preferredSize);
-        formPanel.add(companiesWorkedField, gbc);
+        JTextField certificationsField = new JTextField();
+        certificationsField.setPreferredSize(preferredSize);
+        addPlaceholderBehavior(certificationsField, "Number of certifications");
+        formPanel.add(certificationsField, gbc);
 
         // Add the predict button panel
         JPanel predictButtonPanel = new JPanel();
@@ -275,6 +311,112 @@ public class Home extends JPanel {
         add(formPanel, BorderLayout.CENTER);
         add(predictButtonPanel, BorderLayout.SOUTH);
 
+        // Modify the predict button action listener
+        predictButton.addActionListener(e -> {
+            // Collect all the form data
+            Map<String, String> formData = new HashMap<>();
+            formData.put("stream", streamDropdown.getSelectedItem().toString());
+            formData.put("gender", maleButton.isSelected() ? "Male" : "Female");
+            formData.put("age", ageField.getText());
+            formData.put("tenth_result", tenthResultField.getText());
+            formData.put("twelfth_result", twelfthResultField.getText());
+            formData.put("btech_cgpa", btechCgpaField.getText());
+            formData.put("backlogs", backlogsField.getText());
+            
+            // Get selected codechef stars
+            for (Enumeration<AbstractButton> buttons = codechefStarsGroup.getElements(); buttons.hasMoreElements();) {
+                AbstractButton button = buttons.nextElement();
+                if (button.isSelected()) {
+                    formData.put("codechef_stars", button.getText());
+                    break;
+                }
+            }
+            
+            formData.put("codeforces_title", codeforcesDropdown.getSelectedItem().toString());
+            
+            // Add coding platform problems solved
+            for (String platform : platforms) {
+                ButtonGroup group = platformGroups.get(platform);
+                for (Enumeration<AbstractButton> buttons = group.getElements(); buttons.hasMoreElements();) {
+                    AbstractButton button = buttons.nextElement();
+                    if (button.isSelected()) {
+                        formData.put(platform.toLowerCase().replace(" ", "_") + "_problems", button.getText());
+                        break;
+                    }
+                }
+            }
+
+            // Add proficiency levels
+            for (Enumeration<AbstractButton> buttons = aptitudeGroup.getElements(); buttons.hasMoreElements();) {
+                AbstractButton button = buttons.nextElement();
+                if (button.isSelected()) {
+                    formData.put("aptitude_level", button.getText());
+                    break;
+                }
+            }
+
+            for (Enumeration<AbstractButton> buttons = communicationGroup.getElements(); buttons.hasMoreElements();) {
+                AbstractButton button = buttons.nextElement();
+                if (button.isSelected()) {
+                    formData.put("communication_level", button.getText());
+                    break;
+                }
+            }
+            
+            formData.put("experience", experienceField.getText());
+            formData.put("certifications", certificationsField.getText());
+            
+            // Send data to backend
+            new Thread(() -> {
+                try {
+                    URL url = new URL("http://localhost:5000/predict");
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.setRequestMethod("POST");
+                    conn.setRequestProperty("Content-Type", "application/json");
+                    conn.setRequestProperty("Accept", "application/json");
+                    conn.setDoOutput(true);
+
+                    // Convert map to JSON string
+                    JSONObject jsonObject = new JSONObject(formData);
+                    String jsonInputString = jsonObject.toString();
+
+                    try(OutputStream os = conn.getOutputStream()) {
+                        byte[] input = jsonInputString.getBytes("utf-8");
+                        os.write(input, 0, input.length);           
+                    }
+
+                    try(BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8"))) {
+                        StringBuilder response = new StringBuilder();
+                        String responseLine = null;
+                        while ((responseLine = br.readLine()) != null) {
+                            response.append(responseLine.trim());
+                        }
+                        
+                        // Parse response
+                        JSONObject jsonResponse = new JSONObject(response.toString());
+                        String prediction = jsonResponse.getString("prediction");
+                        String confidence = jsonResponse.getString("confidence");
+                        
+                        // Update UI with prediction
+                        SwingUtilities.invokeLater(() -> {
+                            JOptionPane.showMessageDialog(this, 
+                                "Predicted Package: " + prediction + "\nConfidence: " + confidence,
+                                "Prediction Result",
+                                JOptionPane.INFORMATION_MESSAGE);
+                        });
+                    }
+
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                    SwingUtilities.invokeLater(() -> {
+                        JOptionPane.showMessageDialog(this,
+                            "Error connecting to server: " + ex.getMessage(),
+                            "Error",
+                            JOptionPane.ERROR_MESSAGE);
+                    });
+                }
+            }).start();
+        });
     }
 
     private JButton createRoundedButton(String text) {
@@ -299,5 +441,24 @@ public class Home extends JPanel {
         button.setContentAreaFilled(false);
         button.setFocusPainted(false); // Disable focus border
         return button;
+    }
+
+    private void addPlaceholderBehavior(JTextField textField, String placeholder) {
+        textField.setText(placeholder);
+        textField.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (textField.getText().equals(placeholder)) {
+                    textField.setText("");
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (textField.getText().isEmpty()) {
+                    textField.setText(placeholder);
+                }
+            }
+        });
     }
 }

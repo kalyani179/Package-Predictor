@@ -123,7 +123,7 @@ public class NavBar extends JPanel {
     }
 
     public void getLogo() {
-        JLabel logo = new JLabel("SatKal");
+        JLabel logo = new JLabel("Package Predictor");
         Hamburger menu = new Hamburger();
         menu.setBounds(Constants.width - 80, 10, 50, 50);
         menu.setEnabled(!NavBar.isMenuActive);
@@ -142,9 +142,9 @@ public class NavBar extends JPanel {
         logo.setForeground(Color.white);
         logo.setBackground(Color.black);
         logo.setBorder(new EmptyBorder(20, 20, 20, 20));
-        logo.setFont(new Font("Serif", Font.BOLD, 48));
+        logo.setFont(new Font("Serif", Font.BOLD, 25));
         logo.setOpaque(true);
-        logo.setBounds(5, 5, 250, 50);
+        logo.setBounds(5, 5, 450, 50);
 
         this.add(logo);
         this.add(menu);
