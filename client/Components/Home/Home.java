@@ -39,18 +39,6 @@ public class Home extends JPanel {
         topPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         topPanel.setBackground(Color.BLACK);
 
-        JButton button1 = createRoundedButton("Individual");
-        button1.setFont(new Font("Montserrat", Font.BOLD, 18));
-        button1.setMargin(new Insets(5, 20, 5, 20));
-
-        JButton button2 = createRoundedButton("Mass/Group");
-        button2.setFont(new Font("Montserrat", Font.BOLD, 18));
-        button2.setMargin(new Insets(5, 20, 5, 20));
-
-        // Adding buttons to top panel
-        topPanel.add(button1);
-        topPanel.add(button2);
-
         // Main form panel
         JPanel formPanel = new JPanel(new GridBagLayout());
         formPanel.setBackground(Color.BLACK);
